@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "name": "bragi-ui",
+      "path": "bragi-ui"
+    },
+    {
+      "name": "bragi-server",
+      "path": "bragi-server"
+    }
+  ]
+}

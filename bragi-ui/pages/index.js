@@ -20,7 +20,6 @@ export default function Search() {
           e.preventDefault();
           if (query === "") return;
           const res = await axios.post("/query", { query });
-
           setSearchData({ queryTerm: query, data: res.data });
           setResults(
             res.data.sort((a, b) =>
@@ -35,21 +34,19 @@ export default function Search() {
           </div>
           <input
             type="text"
-            className="rounded bg-gray-200 outline-none p-2 mr-2 w-96"
+            className="rounded bg-gray-200 outline-none p-2 mr-2 w-96 text-gray-900"
             onChange={(e) => {
               setQuery(e.target.value);
             }}
             defaultValue={queryTerm}
           />
-          <button className=" rounded bg-blue-600 p-2 text-white">
-            Search
-          </button>
+          <button className="rounded bg-blue-600 p-2">Search</button>
         </div>
         <div className="container min-w-full flex justify-center">
           <div className="">
             {results.map((item) => (
               <Link key={item.id} href={`/song/${item.id}`}>
-                <div className="text-white bg-gray-700 my-2 p-4 w-96 rounded cursor-pointer transition-colors hover:bg-gray-600">
+                <div className="bg-gray-700 my-2 p-4 w-96 rounded cursor-pointer transition-colors hover:bg-gray-600">
                   <div>
                     {item.primary_artist.name} - {item.title}
                   </div>

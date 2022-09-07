@@ -47,7 +47,7 @@ const SongInformation = () => {
               </button>
             </Link>
           </div>
-          <div className="container ml-3 mt-10">
+          <div className="container ml-14 mt-10">
             <div className="text-4xl font-bold">{song?.title}</div>
             <div className="ml-1 mt-2">{song?.artist_names}</div>
             <div className="ml-1 mt-2 text-gray-500 text-sm">
@@ -55,7 +55,7 @@ const SongInformation = () => {
             </div>
           </div>
         </div>
-        <div className="mt-10 text-sm">
+        <div className="my-10 text-sm">
           <div dangerouslySetInnerHTML={{ __html: lyrics }}></div>
           {!lyrics && <div className="text-center mt-20">No Lyrics</div>}
         </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useSearchData from "../../hooks/useSearchData";
 import axios from "axios";
+import Image from "next/image";
 
 const SongInformation = () => {
   const router = useRouter();
@@ -47,6 +48,17 @@ const SongInformation = () => {
               </button>
             </Link>
           </div>
+          <div className="ml-14 mt-10 w-1/3 transition-all hover:scale-110">
+            <a href={song?.url}>
+              <Image
+                className="rounded cursor-pointer"
+                src={song?.song_art_image_url}
+                alt="album-cover"
+                width={200}
+                height={200}
+              />
+            </a>
+          </div>
           <div className="container ml-14 mt-10">
             <div className="text-4xl font-bold">{song?.title}</div>
             <div className="ml-1 mt-2">{song?.artist_names}</div>
@@ -56,7 +68,9 @@ const SongInformation = () => {
           </div>
         </div>
         <div className="my-10 text-sm">
-          <div dangerouslySetInnerHTML={{ __html: lyrics }}></div>
+          <div
+            dangerouslySetInnerHTML={{ __html: lyrics.replace(/<a .*?>/g, "") }}
+          ></div>
           {!lyrics && <div className="text-center mt-20">No Lyrics</div>}
         </div>
       </div>

@@ -4,18 +4,18 @@ const nextConfig = {
   images: {
     domains: ["images.genius.com"],
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: "/query",
-  //       destination: "http://localhost:4000",
-  //     },
-  //     {
-  //       source: "/lyrics",
-  //       destination: "http://localhost:4000/lyrics",
-  //     },
-  //   ];
-  // },
+  async rewrites() {
+    return [
+      {
+        source: "/query",
+        destination: "http://localhost:4000",
+      },
+      {
+        source: "/lyrics",
+        destination: "http://localhost:4000/lyrics",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

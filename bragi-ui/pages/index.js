@@ -19,7 +19,9 @@ export default function Search() {
         onSubmit={async (e) => {
           e.preventDefault();
           if (query === "") return;
-          const res = await axios.post("/query", { query });
+          const res = await axios.post("/query", {
+            query: query.trim().toLowerCase(),
+          });
           setSearchData({ queryTerm: query, data: res.data });
           setResults(
             res.data.sort((a, b) =>

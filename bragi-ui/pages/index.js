@@ -21,7 +21,11 @@ export default function Search() {
           e.preventDefault();
           setIsValid(true);
           // Validates the query
-          if (new RegExp(/[^a-zA-Z0-9\s]/g).test(query) || query === "") {
+          if (
+            new RegExp(/[^a-zA-Z0-9\s]/g).test(query) ||
+            query === "" ||
+            query.length > 150
+          ) {
             setIsValid(false);
             return;
           }

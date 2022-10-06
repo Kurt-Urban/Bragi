@@ -2,7 +2,7 @@
 const nextConfig = {
   swcMinify: true,
   images: {
-    domains: ["images.genius.com"],
+    domains: ["images.genius.com", "images.rapgenius.com"],
   },
   async rewrites() {
     return [

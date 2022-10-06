@@ -6,6 +6,7 @@ import useSearchData from "../hooks/useSearchData";
 export default function Search() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [isValid, setIsValid] = useState(true);
 
   const { searchData, queryTerm, setSearchData } = useSearchData();
 
@@ -18,7 +19,11 @@ export default function Search() {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          if (query === "") return;
+          setIsValid(true);
+          if (new RegExp(/[^a-zA-Z0-9\s]/g).test(query) || query === "") {
+            setIsValid(false);
+            return;
+          }
           const res = await axios.post("/query", {
             query: query.trim().toLowerCase(),
           });
@@ -30,10 +35,15 @@ export default function Search() {
           );
         }}
       >
-        <div className="container min-w-full text-center mt-20 mb-10">
+        <div className="container min-w-full text-center mt-20 mb-10 relative">
           <div className="text-2xl text-blue-500 font-bold mb-4">
             Music Search
           </div>
+          {isValid ? null : (
+            <small className="absolute top-full text-red-600 font-bold">
+              Invalid Input
+            </small>
+          )}
           <input
             type="text"
             className="rounded bg-gray-200 outline-none p-2 mr-2 w-96 text-gray-900"
@@ -42,7 +52,10 @@ export default function Search() {
             }}
             defaultValue={queryTerm}
           />
-          <button className="rounded bg-blue-600 p-2">Search</button>
+
+          <button className="rounded bg-blue-600 p-2 px-3 transition-colors hover:bg-blue-800">
+            Search
+          </button>
         </div>
         <div className="container min-w-full flex justify-center">
           <div className="">

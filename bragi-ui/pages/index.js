@@ -20,13 +20,16 @@ export default function Search() {
         onSubmit={async (e) => {
           e.preventDefault();
           setIsValid(true);
+          // Validates the query
           if (new RegExp(/[^a-zA-Z0-9\s]/g).test(query) || query === "") {
             setIsValid(false);
             return;
           }
+          // Fetches the data from the server
           const res = await axios.post("/query", {
             query: query.trim().toLowerCase(),
           });
+          // Sets the results in global context cache and local state
           setSearchData({ queryTerm: query, data: res.data });
           setResults(
             res.data.sort((a, b) =>
@@ -59,6 +62,7 @@ export default function Search() {
         </div>
         <div className="container min-w-full flex justify-center">
           <div className="">
+            {/* Maps through results to display them on the page */}
             {results.map((item) => (
               <Link key={item.id} href={`/song/${item.id}`}>
                 <div className="bg-gray-700 my-2 p-4 w-96 rounded cursor-pointer transition-colors hover:bg-gray-600">

@@ -32,6 +32,7 @@ export const SearchDataContext = createContext(initialState);
 export const SearchDataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(SearchDataReducer, initialState);
 
+  // Sets the search data in the global context
   function setSearchData(payload) {
     dispatch({
       type: "SEARCH_DATA",
@@ -39,6 +40,7 @@ export const SearchDataProvider = ({ children }) => {
     });
   }
 
+  // Adds the lyrics to the global context cache
   function addLyricsToCache(payload) {
     dispatch({
       type: "CACHE_LYRICS",

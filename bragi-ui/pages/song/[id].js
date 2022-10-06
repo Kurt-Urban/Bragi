@@ -12,6 +12,7 @@ const SongInformation = () => {
   const [lyrics, setLyrics] = useState("");
 
   useEffect(() => {
+    // If no id or search data returns to home page
     if (!id || !searchData) {
       router.push("/");
     }
@@ -20,6 +21,8 @@ const SongInformation = () => {
   const lyricsByID = lyricsCache.find((item) => item.song_id === parseInt(id));
 
   useEffect(() => {
+    // If lyrics are in cache function gets them
+    // Otherwise fetches them from the server
     if (!lyricsByID) {
       axios
         .post("/lyrics", { id })

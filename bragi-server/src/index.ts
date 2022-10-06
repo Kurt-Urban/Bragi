@@ -14,8 +14,10 @@ app.listen(port, () => {
   console.log(`Running on port ${port}`);
 });
 
+// Get song list based on the query string
+// If the api fails it will return an error
 app.post("/", (req: Request, res: Response) => {
-  // Uncomment this line to use API
+  // Uncomment below to use API
   const options = {
     params: { q: req.body.query },
     headers: {
@@ -44,6 +46,8 @@ app.post("/", (req: Request, res: Response) => {
   // res.send(results);
 });
 
+// Get lyrics based on the song id
+// If the api fails it will return an error and ui will display "no lyrics"
 app.post("/lyrics", (req: Request, res: Response) => {
   if (!req.body.id) return res.send("No id provided");
 

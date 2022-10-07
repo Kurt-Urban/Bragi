@@ -13,16 +13,16 @@ Server:
 
 ```
 cd bragi-server
-npm install | yarn
-npm start | yarn start
+npm install || yarn
+npm start || yarn start
 ```
 
 UI
 
 ```
 cd bragi-ui
-npm install | yarn
-npm run dev | yarn dev
+npm install || yarn
+npm run dev || yarn dev
 ```
 Then paste this url in any browser:
 ```

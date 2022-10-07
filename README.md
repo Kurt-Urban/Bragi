@@ -7,6 +7,10 @@ Project for SWENG861 - Penn State Masters Program
 
 ## Getting Started
 
+```
+git clone https://github.com/Kurt-Urban/Bragi.git
+```
+
 I have already almost run out of api uses on the free tier, please sign up for a free key here:
 https://rapidapi.com/Glavier/api/genius-song-lyrics1/
 You will need to replace ```process.env.API_KEY``` with your api key in two places indicated in the index.js by comments.

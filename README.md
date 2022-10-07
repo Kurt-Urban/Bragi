@@ -24,3 +24,7 @@ cd bragi-ui
 npm install | yarn
 npm run dev | yarn dev
 ```
+Then paste this url in any browser:
+```
+http://localhost:3000
+```
